@@ -18,6 +18,7 @@
             
             choice = choice[Math.floor(Math.random() * choice.length)];
 
+            //Increment score based on wins/losses
 
             function play() {
 
@@ -26,16 +27,22 @@
                 } else if (selection === 'paper' && choice === 'paper') {
                     return 'It\'s a draw! You both chose paper.';
                 } else if (selection === 'rock' && choice === 'paper') {
+                    ++computerScore;
                     return 'You lose! Paper beats rock.';
                 } else if (selection === 'scissors' && choice === 'paper') {
+                    ++playerScore;
                     return 'You win! Scissors beats paper.';
                 } else if (selection === 'paper' && choice === 'rock') {
+                    ++playerScore;
                     return 'You win! Paper beats rock.';
                 } else if (selection === 'scissors' && choice === 'rock') {
+                    ++computerScore;
                     return 'You lose! Rock beats scissors.';
                 } else if (selection === 'rock' && choice === 'scissors') {
+                    ++playerScore;
                     return 'You win! Rock beats scissors.';
                 } else if (selection === 'paper' && choice === 'scissors') {
+                    ++computerScore;
                     return 'You lose! Scissors beats paper.';
                 } else if (selection === 'scissors' && choice === 'scissors') {
                     return 'It\'s a draw! You both chose scissors.';
@@ -43,8 +50,21 @@
                     return 'Try again.';
                 }
             }
+
+            //Keep score
+            
+            let playerScore = 0;
+            let computerScore = 0;
+
             for (let i = 0; i < 5; i++) {
-                console.log(play());
+
+                if (playerScore > computerScore) {
+                    console.log('You win, the score is ' + i);
+                } else if (computerScore > playerScore) {
+                    console.log('You lose, the score is ' + i);
+                } else {
+                    console.log('It\'s a tie');
+                }
             }
         </script>
     </body>
