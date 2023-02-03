@@ -12,6 +12,10 @@
         </header>
 
         <script>
+            
+           //Loops game 5 times
+           for (let i = 0; i < 5; i++) {
+
             //String method makes user selection case insensitive
             let selection = prompt('Please make a selection').toLowerCase();
 
@@ -47,10 +51,7 @@
                 }
             }
 
-            //Figuring out how to add for loop to play 5 rounds
-                //I'm thinking score needs to be the paramter in play function and playerScore, computerScore need
-                //to be parameters of score
-            //for (let i = 0; i < 5; i++) {}
+            alert(play())
 
             //Initial score values
             let playerScore = 0;
@@ -60,13 +61,16 @@
             function score() {   
 
                 if (play() === 'You win!') {
-                    alert('Player score: ' + ++playerScore + '\nComputer score: ' + computerScore);
+                    return 'Player score: ' + ++playerScore + '\nComputer score: ' + computerScore;
               } else if (play() === 'You lose!') {
-                    alert('Computer score: ' + ++computerScore + '\nPlayer score: ' + playerScore);
+                    return 'Computer score: ' + ++computerScore + '\nPlayer score: ' + playerScore;
               } else {
-                    alert('No score change');
+                    return 'No score change';
               }
               }
+  
+              alert(score())
+            }
         </script>
     </body>
 </html>
