@@ -6,20 +6,22 @@
     </head>
 
     <body>
+     
         <header>
             <h1 style="text-align:center;">Rock Paper Scissors</h1>
         </header>
 
         <script>
-    
+            //String method makes user selection case insensitive
             let selection = prompt('Please make a selection').toLowerCase();
 
+            //Array of computer choices
             let choice = ['rock', 'paper', 'scissors'];
-            
+
+            //Randomly calling computer choice
             choice = choice[Math.floor(Math.random() * choice.length)];
 
-            //Increment score based on wins/losses
-
+            //Returns result of round
             function play() {
 
                 if (selection === 'rock' && choice === 'rock') {
@@ -27,23 +29,17 @@
                 } else if (selection === 'paper' && choice === 'paper') {
                     return 'It\'s a draw! You both chose paper.';
                 } else if (selection === 'rock' && choice === 'paper') {
-                    ++computerScore;
-                    return 'You lose! Paper beats rock.';
+                    return 'You lose!';
                 } else if (selection === 'scissors' && choice === 'paper') {
-                    ++playerScore;
-                    return 'You win! Scissors beats paper.';
+                    return 'You win!';
                 } else if (selection === 'paper' && choice === 'rock') {
-                    ++playerScore;
-                    return 'You win! Paper beats rock.';
+                    return 'You win!';
                 } else if (selection === 'scissors' && choice === 'rock') {
-                    ++computerScore;
-                    return 'You lose! Rock beats scissors.';
+                    return 'You lose!';
                 } else if (selection === 'rock' && choice === 'scissors') {
-                    ++playerScore;
-                    return 'You win! Rock beats scissors.';
+                    return 'You win!';
                 } else if (selection === 'paper' && choice === 'scissors') {
-                    ++computerScore;
-                    return 'You lose! Scissors beats paper.';
+                    return 'You lose!';
                 } else if (selection === 'scissors' && choice === 'scissors') {
                     return 'It\'s a draw! You both chose scissors.';
                 } else {
@@ -51,21 +47,26 @@
                 }
             }
 
-            //Keep score
-            
+            //Figuring out how to add for loop to play 5 rounds
+                //I'm thinking score needs to be the paramter in play function and playerScore, computerScore need
+                //to be parameters of score
+            //for (let i = 0; i < 5; i++) {}
+
+            //Initial score values
             let playerScore = 0;
             let computerScore = 0;
 
-            for (let i = 0; i < 5; i++) {
+            //Returns score after round
+            function score() {   
 
-                if (playerScore > computerScore) {
-                    console.log('You win, the score is ' + i);
-                } else if (computerScore > playerScore) {
-                    console.log('You lose, the score is ' + i);
-                } else {
-                    console.log('It\'s a tie');
-                }
-            }
+                if (play() === 'You win!') {
+                    alert('Player score: ' + ++playerScore + '\nComputer score: ' + computerScore);
+              } else if (play() === 'You lose!') {
+                    alert('Computer score: ' + ++computerScore + '\nPlayer score: ' + playerScore);
+              } else {
+                    alert('No score change');
+              }
+              }
         </script>
     </body>
 </html>
